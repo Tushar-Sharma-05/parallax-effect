@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+<body>
+  <div class="block">
+    <img src="https://unsplash.it/1920/1920/?image=1005" data-speed="-1" class="img-parallax">
+    <h2 data-aos="zoom-in">Parallax Speed -1</h2>
+  </div>
+  <div class="block">
+    <img src="  https://unsplash.it/1920/1920/?random" data-speed="1" class="img-parallax">
+    <h2 data-aos="fade-up"
+    data-aos-anchor-placement="bottom-bottom">Parallax Speed 1</h2>
+  </div>
+  <div class="block">
+    <img src="https://unsplash.it/1920/1920/?flower" data-speed="-0.25" class="img-parallax">
+    <h2 data-aos="zoom-in">Parallax Speed -0.25</h2>
+  </div>
+  <div class="block">
+    <img  src="https://unsplash.it/1920/1920/?people" data-speed="0.25" class="img-parallax">
+    <h2 data-aos="zoom-in">Parallax Speed 0.25</h2>
+  </div>
+  <div class="block">
+    <img src="https://unsplash.it/1920/1920/?city" data-speed="-0.75" class="img-parallax">
+    <h2 data-aos="zoom-in">Parallax Speed -0.75</h2>
+  </div>
+  <div class="block">
+    <img src="https://unsplash.it/1920/1920/?fruits" data-speed="0.75" class="img-parallax">
+    <h2 data-aos="zoom-in">Parallax Speed 0.75</h2>
+  </div>
+      <script src="script.js"></script>
+      <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+      <script>
+      $(document).ready(function(){
+
+        // jQuery methods go here...
+        // I know that the code could be better.
+// If you have some tips or improvement, please let me know.
+
+$('.img-parallax').each(function(){
+  console.log("hyyyy")
+  var img = $(this);
+  var imgParent = $(this).parent();
+  function parallaxImg () {
+    var speed = img.data('speed');
+    var imgY = imgParent.offset().top;
+    var winY = $(this).scrollTop();
+    var winH = $(this).height();
+    var parentH = imgParent.innerHeight();
+
+
+    // The next pixel to show on screen      
+    var winBottom = winY + winH;
+
+    // If block is shown on screen
+    if (winBottom > imgY && winY < imgY + parentH) {
+      // Number of pixels shown after block appear
+      var imgBottom = ((winBottom - imgY) * speed);
+      // Max number of pixels until block disappear
+      var imgTop = winH + parentH;
+      // Porcentage between start showing until disappearing
+      var imgPercent = ((imgBottom / imgTop) * 100) + (50 - (speed * 50));
+    }
+    img.css({
+      top: imgPercent + '%',
+      transform: 'translate(-50%, -' + imgPercent + '%)'
+    });
+  }
+  $(document).on({
+    scroll: function () {
+      parallaxImg();
+    }, ready: function () {
+      parallaxImg();
+    }
+  });
+});
+
+
+      
+      });
+    </script>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init();
+    </script>
+</body>
+</html>

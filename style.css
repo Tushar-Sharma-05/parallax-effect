@@ -1,0 +1,44 @@
+@import url(https://fonts.googleapis.com/css?family=Amatic+SC:400,700);
+html, body{
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  font-family: 'Amatic SC', cursive;
+}
+
+::-webkit-scrollbar{
+  width: 7px;
+  background-color: rgb(184, 178, 178);
+}
+::-webkit-scrollbar-thumb{
+background:linear-gradient(rgb(63, 36, 51),rgb(136, 40, 133));
+border-radius: 4px;
+}
+.block{
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  font-size: 16px;
+}
+.block h2{
+  position: relative;
+  display: block;
+  text-align: center;
+  margin: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 10vw;
+  color: white;
+  font-weight: 400;
+}
+.img-parallax {
+  width: 100vmax;
+  z-index: -1;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%,0);
+  pointer-events: none
+}
